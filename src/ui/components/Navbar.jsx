@@ -41,6 +41,13 @@ export const Navbar = () => {
                         Logout
                     </NavLink> */}
 
+                    <NavLink 
+                        className= { ({isActive}) => `nav-item nav-link ${isActive ? 'active' : ''}`}
+                        to="/search"
+                    >
+                        Search
+                    </NavLink>
+
                     <span className='nav-item nav-link text-info'>
                         Alvaro
                     </span>
