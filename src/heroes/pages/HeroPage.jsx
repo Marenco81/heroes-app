@@ -1,5 +1,6 @@
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { getHeroById } from "../helpers";
+import { useMemo } from "react";
 
 
 export const HeroPage = () => {
@@ -7,13 +8,13 @@ export const HeroPage = () => {
   const {id} = useParams();
   const navigate = useNavigate();
 
-  const hero = getHeroById(id);
+  const hero = useMemo( () => getHeroById( id ), [ id ] ); 
 
   const onNavigateBack = () => {
     navigate(-1);
   };
     
-
+ 
   if (!hero) {
     return <Navigate to="/marvel" />
   }
@@ -35,7 +36,7 @@ export const HeroPage = () => {
             <li className="list-group-item"><b>First appearance:</b> {hero.first_appearance} </li>
           </ul>
 
-          <h5 className="mt-3" > Characters </h5>
+          <h5 className="mt-3" > Characters: </h5>
           <p> {hero.characters} </p>
 
           <button 
