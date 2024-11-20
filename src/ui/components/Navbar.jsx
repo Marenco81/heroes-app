@@ -1,8 +1,12 @@
-
+import { useContext } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../auth/context';
 
 
 export const Navbar = () => {
+
+    const {user} = useContext(AuthContext);
+    console.log(user);
 
     const navigate = useNavigate();
 
@@ -60,7 +64,7 @@ export const Navbar = () => {
                     </NavLink>
 
                     <span className='nav-item nav-link text-info'>
-                        Alvaro
+                        {user?.name}
                     </span>
 
                     <button 
